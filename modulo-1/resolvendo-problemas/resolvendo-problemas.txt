@@ -1,0 +1,8 @@
+Exercícios de fixação do conhecimento.
+
+Antes de começar é importante observar o que pede o enunciado, e selecionar todas as informações úteis sobre o que o código deve fazer. 
+Separar todas as palavras chaves que podem ser usadas como nome de variáveis. Pensar nas entradas e saídas e, nas possíveis respostas do código. 
+Depois, fazer um esquema (rascunho) onde possa ser visualizado a lógica do código com os inputs e outputs. Escolher as melhores soluções e testar cada uma, até obter a resposta solicitada. 
+Usar a nossa própria linguagem para facilitar o desenvolvimento do código, e depois transcrever utilizando uma linguagem de programação. Dando bons nomes para as variáveis e funções, começando pelas etapas principais. 
+
+
