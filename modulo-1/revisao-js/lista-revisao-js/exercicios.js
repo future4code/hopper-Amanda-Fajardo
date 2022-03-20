@@ -79,16 +79,33 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
 
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
-numeroPar = []
 
+    let numerosPares = [];
+    for (let i = 0; numerosPares.length < n; i += 2) {
+        numerosPares.push(i);
 
-
-
+    }
+    return numerosPares
 }
+
+
+
+
 
 // EXERCÍCIO 09
 function classificaTriangulo(ladoA, ladoB, ladoC) {
 
+    if (ladoA === ladoB && ladoB === ladoC) {
+        return "Equilátero"
+
+    }
+    else if (ladoA === ladoB || ladoA === ladoC || ladoB === ladoC) {
+        return "Isósceles"
+
+    }
+    else {
+        return "Escaleno"
+    }
 
 
 }
@@ -96,31 +113,59 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
 
+    array.sort((a, b) => a - b)
+
+    let arrayMaiorEMenor = [];
+
+    arrayMaiorEMenor.push(array[array.length - 2])
+    arrayMaiorEMenor.push(array[1])
+
+    return arrayMaiorEMenor
 }
 
 // EXERCÍCIO 11
 function retornaChamadaDeFilme(filme) {
+
+
+    const frase = `Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${filme.atores[0]}, ${filme.atores[1]}, ${filme.atores[2]}, ${filme.atores[3]}.`
+
+    return frase
 
 }
 
 // EXERCÍCIO 12
 function retornaPessoaAnonimizada(pessoa) {
 
+    const novaPessoa = {
+        ...pessoa,
+        nome: "ANÔNIMO",
+    }
+    return novaPessoa
 }
 
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
+
+    let pessoasAutorizadas = pessoas.filter((pessoa) => pessoa.altura > 1.5 && pessoa.idade > 14 && pessoa.idade < 60)
+
+    return pessoasAutorizadas
 
 }
 
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
 
+    let pessoasNaoAutorizadas = pessoas.filter((pessoaNao) => pessoaNao.altura < 1.5 || pessoaNao.idade <= 14 || pessoaNao.idade > 60)
+
+    return pessoasNaoAutorizadas
+
 }
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
 
+     
+    
 }
 
 // EXERCÍCIO 15A
