@@ -1,0 +1,27 @@
+body{
+font-family: Arial, Helvetica, sans-serif;
+background-color: antiquewhite;
+font-size: 18px;
+max-width: 750px;
+vertical-align: middle;
+position: relative;
+margin-left: auto;
+margin-right: auto;
+}
+
+.titulo-loja{
+    background-color:rgba(158, 76, 29, 0.452);
+    border: 2px solid saddlebrown;
+    color: rgb(21, 88, 38);
+
+}
+
+table, th, td {
+    border-collapse: collapse;
+    border: 1px solid #928d8dc7;
+    align-content: center;
+    text-align: center;
+    border-radius: 5px;
+}
+
+
