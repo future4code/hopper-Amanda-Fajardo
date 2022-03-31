@@ -1,0 +1,33 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+header{
+    background-color: mediumvioletred;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    justify-content: space-between;
+    height: 3vh;
+}
+
+main{
+    background-color: #f2d0e0;
+    display: flex;
+    flex-direction: row;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+}
+
+.icone-menu{
+        display: flex;
+        justify-content: flex-start;
+        padding: 10px;
+    }
