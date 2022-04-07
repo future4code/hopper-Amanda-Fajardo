@@ -4,26 +4,27 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>LabeTube</title>
     <link rel="Stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <h1>PsychedeliaTube</h1>
-
+    <header class="cabecalho">
+      <a href="index.html">
+        <h1>PsychedeliaTube</h1>
+      </a>
       <input class="busca" type="text" placeholder="Buscar" />
     </header>
 
-    <main>
-      <div class="video">
-        <video autoplay loop controls muted>
-          <source
-            src="https://storage.googleapis.com/future-apis.appspot.com/8.mp4"
-          />
-        </video>
-        <p>Psicodelia Espacial</p>
-      </div>
-    </main>
+    <section class="section-video">
+      <video
+        class="video"
+        src="https://storage.googleapis.com/future-apis.appspot.com/2.mp4"
+        autoplay
+        loop
+        controls
+        muted
+      ></video>
+    </section>
     <footer>Natureza Psicodélica</footer>
   </body>
 </html>
