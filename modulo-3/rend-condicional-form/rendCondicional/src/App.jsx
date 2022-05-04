@@ -6,6 +6,19 @@ import InfoEducacionais from "./components/InfoEducacionais";
 import InfoComplementares from "./components/InfoComplementares";
 import EtapaFinal from "./components/EtapaFinal";
 
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const Botao = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+  width: 10em;
+  padding: 1em;
+`
 class App extends React.Component {
   state = {
     etapa: 1,
@@ -35,14 +48,16 @@ class App extends React.Component {
 
   render() {
     return (
+      <MainContainer>
       <div>
         {this.renderizaEtapa()}
         {this.state.etapa <= 3 ? (
-          <>
+          <Botao>
             <button onClick={this.irParaProximaEtapa}>Próxima Etapa</button>
-          </>
+          </Botao>
         ) : null}
-      </div>
+        </div>
+      </MainContainer>
     );
   }
 }
