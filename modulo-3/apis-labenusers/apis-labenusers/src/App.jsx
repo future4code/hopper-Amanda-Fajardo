@@ -19,12 +19,14 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.trocarDeTela}>Trocar de tela</button>
+        
+        <button className='trocarTela' onClick={this.trocarDeTela}>Trocar de tela</button>
         {this.state.telaExibir === 'Cadastro' ? (
           <CadastraUsuario />
         ) : (
           <ListaUsuarios />
         )}
+        
       </div>
     )
   }

@@ -49,7 +49,7 @@ class CadastraUsuario extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='cadastroDiv'>
         <input
           placeholder="Nome"
           type="text"
@@ -62,7 +62,7 @@ class CadastraUsuario extends React.Component {
           value={this.state.inputEmail}
           onChange={this.onChangeEmail}
         />
-        <button onClick={this.criarCadastroDoUsuario}>Criar Usuário</button>
+        <button onClick={this.criarCadastroDoUsuario}>CRIAR USUÁRIO</button>
       </div>
     )
   }

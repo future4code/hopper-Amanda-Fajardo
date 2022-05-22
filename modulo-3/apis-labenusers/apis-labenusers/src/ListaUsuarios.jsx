@@ -52,7 +52,7 @@ class ListaUsuarios extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='listaUsuarios'>
         <div>
           <ul>
             {this.state.cadastros.map((nomes, index) => {
