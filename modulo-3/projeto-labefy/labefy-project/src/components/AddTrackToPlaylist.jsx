@@ -7,12 +7,19 @@ const GlobalStyle = createGlobalStyle`
   *{
     margin: 0;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
     
   }
 `;
+const DivPrincipal = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: #f7f2ed;
+`;
 const ImagemLogo = styled.img`
   height: 8vh;
-  /* margin-right: 1px; */
   margin-left: 10px;
 `;
 
@@ -20,10 +27,21 @@ const HeaderLabefy = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
-  background-color:#352f2f;
+  background-image: linear-gradient(
+    -90deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
   width: 98, 5vw;
   height: 11vh;
-  color: #fe7e02;
+  color: white;
+  font-style: oblique;
+  font-stretch: expanded;
   h1 {
     margin-left: 8px;
   }
@@ -31,16 +49,39 @@ const HeaderLabefy = styled.div`
 
 const MainLabefy = styled.div`
   display: flex;
-  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   width: 98, 5vw;
   position: relative;
   background-position: center;
-  background-image: #ccbeac;
+  background: #f7f2ed;
   justify-content: center;
+  background-repeat: no-repeat;
+  h2 {
+    width: 100%;
+  text-align: center;
+  padding: 0 0 5rem 0;
+  font-size: 3rem;
+  font-weight: 100;
+  color:black
+  }
 `;
 
-const PlaylistCard = styled.div`
-  display: inline-block;
+const Control = styled.audio`
+  @media screen and (min-device-width: 300px) and (max-device-width: 380px) {
+    width: 100px;
+    height: 40px;
+  }
+`;
+const SectionInputDiv = styled.div`
+  display: inline-flex;
+  
+`
+
+const CardList = styled.div`
+  /* display: inline-block; */
   display: flex;
   border: 1px solid black;
   align-items: center;
@@ -48,46 +89,51 @@ const PlaylistCard = styled.div`
   margin-bottom: 20px;
   padding-left: 10px;
   justify-content: space-evenly;
-  background-image: linear-gradient(to left, #fe7e02, #fe7e02, #f7ad18e8);
+  background-image: linear-gradient(0deg, #711e8c, violet);
   height: 80px;
   font-size: 15px;
-  color: black;
+  color:white;
+
+  
 `;
 
-const ControlsCard = styled.audio`
-   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    width: 100px;
-    height: 40px;
+const PlaylistButton = styled.button`
+display: inline-block;
+  /* display: flex; */
+  margin: auto;
+  margin-top: 40px;
+  padding: 1.6rem;
+  width: 20rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: 800;
+  flex-direction: column;
+  border: groove 0.3em violet;
+  border-radius: 2em;
+  background: pink;
+  color: #7a25a1;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  :hover {
+    background-color: #7a25a1;
+    color: #fff;
   }
 `;
 
-const DivPrincipal = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  color: white;
-`;
-
-const ButtonPlaylist = styled.button`
-  margin-left: 10px;
-  border-radius: 15px;
-  height: 35px;
-  background-color: black;
-  color: #fe7e02;
-  width: 100px;
-`;
-
-const InputTracks = styled.input`
-   background: transparent;
+const TracksInput = styled.input`
+  background: transparent;
   border: none;
   border-bottom: 1px solid white;
   margin-bottom: 15px;
   width: 50%;
   height: 35px;
-  color: white;
+  color: #7a25a1;
   font-size: 20px;
-  color: #fe7e02;
-  border-bottom: 1px solid #fe7e02;
+  color: #7a25a1;
+  border-bottom: 1px solid #7a25a1;
+  
 `;
 
 const FooterLabefy = styled.footer`
@@ -96,10 +142,19 @@ const FooterLabefy = styled.footer`
   align-items: center;
   text-align: center;
   flex-direction: column;
-  background-color: #352f2f;
+  background-image: linear-gradient(
+    -90deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
   height: 11vh;
   width: 98, 5vw;
-  color:  #fe7e02;
+  color: white;
   font-size: 20px;
 `;
 
@@ -142,13 +197,13 @@ class AddTrackToPlaylist extends React.Component {
         headers
       )
       .then((resp) => {
-        console.log(resp)
+        console.log(resp);
         alert("Música adicionada com sucesso!");
         this.setState({ inputName: "", inputArtist: "", inputUrl: "" });
         this.getPlaylistTracks();
       })
       .catch((err) => {
-        alert("Ops! algo deu errado.")
+        alert("Ops! algo deu errado.");
         console.log(err.resp.data);
       });
   };
@@ -157,15 +212,13 @@ class AddTrackToPlaylist extends React.Component {
     axios
       .get(
         `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.props.selectPlaylist.id}/tracks`,
-        headers 
+        headers
       )
       .then((resp) => {
-        this.setState({  playlistTracks: resp.data.result.tracks });
-        console.log(resp.data.result.tracks)
+        this.setState({ playlistTracks: resp.data.result.tracks });
+        console.log(resp.data.result.tracks);
       })
       .catch((err) => console.log(err));
-        
-      
   };
   componentDidMount() {
     this.getPlaylistTracks();
@@ -174,61 +227,68 @@ class AddTrackToPlaylist extends React.Component {
   render() {
     const returnTrack = this.state.playlistTracks.map((track) => {
       return (
-        <PlaylistCard>
+        <CardList>
           <p>Nome:</p>
           <p>{track.name}</p>
           <p>Artista:</p>
           <p>{track.artist}</p>
           <p>Música:</p>
           <p>
-            <ControlsCard controls src={track.url} />
+            <Control controls src={track.url}></Control>
           </p>
-        </PlaylistCard>
+        </CardList>
       );
     });
     return (
       <DivPrincipal>
-        <GlobalStyle />
-        <HeaderLabefy>
-          <ImagemLogo src={foneLogo} />
-          <h1>Labefy Premium</h1>
-        </HeaderLabefy>
+        <div>
+          <GlobalStyle />
+          <HeaderLabefy>
+            <ImagemLogo src={foneLogo} />
+            <h1>Labefy</h1>
+          </HeaderLabefy>
+         
+          <MainLabefy>
+          <h2>Adicionar música</h2>
+            <div>
+              <SectionInputDiv>
+            
+            <TracksInput
+              placeholder={"Nome da música"}
+              value={this.state.inputName}
+              onChange={this.onChangeName}
+            />
 
-        <MainLabefy>
-          <h3>Adicionar música</h3>
-          <InputTracks
-            placeholder={"Nome da música"}
-            value={this.state.inputName}
-            onChange={this.onChangeName}
-          />
+            <TracksInput
+              placeholder={"Nome do artista"}
+              value={this.state.inputArtist}
+              onChange={this.onChangeArtist}
+            />
 
-          <InputTracks
-            placeholder={"Nome do artista"}
-            value={this.state.inputArtist}
-            onChange={this.onChangeArtist}
-          />
+            <TracksInput
+              placeholder={"Link da música"}
+              value={this.state.inputUrl}
+              onChange={this.onChangeUrl}
+            />
 
-          <InputTracks
-            placeholder={"Link da música"}
-            value={this.state.inputUrl}
-            onChange={this.onChangeUrl}
-          />
-
-          <div>
-            <ButtonPlaylist onClick={this.addTrackToPlaylist}>
+            <PlaylistButton onClick={this.addTrackToPlaylist}>
               Adicionar música
-            </ButtonPlaylist>
+            </PlaylistButton>
+            
+            </SectionInputDiv>
             {returnTrack}
-
-            <ButtonPlaylist onClick={this.props.renderGoBack}>
+            <PlaylistButton onClick={this.props.renderGoBack}>
               Voltar
-            </ButtonPlaylist>
-          </div>
-        </MainLabefy>
-        <FooterLabefy>
-          © 2022 Labefy All rights reserved.
-          <p>Projeto desenvolvido pela aluna: Amanda Viana Fajardo </p>
-        </FooterLabefy>
+            </PlaylistButton>
+            
+           
+            </div>
+          </MainLabefy>
+          <FooterLabefy>
+            © 2022 Labefy All rights reserved.
+            <p>By Amanda Viana Fajardo </p>
+          </FooterLabefy>
+        </div>
       </DivPrincipal>
     );
   }

@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
   *{
     margin: 0;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     
   }
 `;
@@ -20,10 +21,12 @@ const HeaderLabefy = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
-  background-color: #352f2f;
+  background-image: linear-gradient(-90deg,red,orange,yellow,green,blue,indigo,violet);  
   width: 98, 5vw;
   height: 11vh;
-  color:#fe7e02 ;
+  color:white ;
+  font-style: oblique;
+  font-stretch: expanded;
   h1 {
     margin-left: 8px;
   }
@@ -35,7 +38,7 @@ const MainLabefy = styled.div`
   width: 98, 5vw;
   position: relative;
   background-position: center;
-  background-image: #ccbeac;
+  background: #f7f2ed;
   justify-content: center;
 `;
 
@@ -45,47 +48,59 @@ const DivCard = styled.div`
   justify-content: center;
   align-items: center;
   padding: 100px 150px;
-  border: 1px solid #fe7e02;
-  margin-top: 43px;
+  border-width: 3px;
+  border-style: ridge;
+  border-color: violet;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
   h2 {
-    font-size: 50px;
-    font-weight: lighter;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    width: 100%;
+  text-align: center;
+  padding: 0 0 5rem 0;
+  font-size: 3rem;
+  font-weight: 100;
+    
+      
   }
 `;
 const Input = styled.input`
   height: 40px;
   background: transparent;
   border-radius: 4px 3px 6px;
-  border-bottom: 5px solid #060a06;
+  border-bottom: 5px solid #7a25a1;
   justify-content: center;
   text-align: center;
   align-items: center;
   display: flex;
-  color: black;
+  color:#7a25a1;
   font-size: 25px;
   margin: auto;
   margin-top: 8px;
   width: 200px;
 `;
 
-const ButtonPlaylist = styled.button`
+const PlaylistButton = styled.button`
   display: flex;
   margin: auto;
   margin-top: 40px;
-  padding: 15px;
-  width: 200px;
+  padding: 1.6rem;
+  width: 20rem;
   text-align: center;
   justify-content: center;
   align-items: center;
-  font-size: 25px;
+  font-size: 1.3rem;
+  font-weight: 800;
   flex-direction: column;
-  border-radius: 20px 1px;
-  border: 1px solid gray;
-  height: 60px;
-  background: transparent;
-  color: black;
+  border: groove 0.3em violet;
+  border-radius: 2em;
+  background: pink;
+  color: #7a25a1;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  :hover {
+  background-color:  #7a25a1;
+  color: #fff;
+}
 `;
 
 
@@ -95,10 +110,10 @@ const FooterLabefy = styled.footer`
   align-items: center;
   text-align: center;
   flex-direction: column;
-  background-color:#352f2f;
+  background-image: linear-gradient(-90deg,red,orange,yellow,green,blue,indigo,violet);  
   height: 11vh;
   width: 98, 5vw;
-  color: #fe7e02;
+  color: white;
   font-size: 20px;
 `;
 
@@ -113,7 +128,7 @@ class CreatePlaylist extends React.Component {
     playlistName: "",
   };
 
-  onChangeCreate = (event) => {
+  onChangePlaylistName = (event) => {
     this.setState({ playlistName: event.target.value });
   };
 
@@ -144,7 +159,7 @@ class CreatePlaylist extends React.Component {
         <GlobalStyle />
         <HeaderLabefy>
           <ImagemLogo src={foneLogo} />
-          <h1>Labefy Premium</h1>
+          <h1>Labefy</h1>
         </HeaderLabefy>
 
         <MainLabefy>
@@ -154,19 +169,19 @@ class CreatePlaylist extends React.Component {
               <Input
                 placeholder={"Nome da playlist"}
                 value={this.state.playlistName}
-                onChange={this.onChangeCreate}
+                onChange={this.onChangePlaylistName}
               />
-              <ButtonPlaylist onClick={this.createPlaylist}>
+              <PlaylistButton onClick={this.createPlaylist}>
                 Criar Playlist
-              </ButtonPlaylist>
+              </PlaylistButton>
 
-              <ButtonPlaylist onClick={this.props.goToList}>Acessar Playlist's</ButtonPlaylist>
+              <PlaylistButton onClick={this.props.goToList}>Gerenciar Playlist's</PlaylistButton>
             </DivCard>
           </div>
         </MainLabefy>
         <FooterLabefy>
           © 2022 Labefy All rights reserved.
-          <p>Projeto desenvolvido pela aluna: Amanda Viana Fajardo </p>
+          <p>By Amanda Viana Fajardo </p>
         </FooterLabefy>
       </div>
     );

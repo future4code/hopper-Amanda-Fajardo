@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
   *{
     margin: 0;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     
   }
 `;
@@ -16,14 +17,17 @@ const ImagemLogo = styled.img`
   /* margin-right: 1px; */
   margin-left: 10px;
 `;
+
 const HeaderLabefy = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
-  background-color: #352f2f;
+  background-image: linear-gradient(-90deg,red,orange,yellow,green,blue,indigo,violet);  
   width: 98, 5vw;
   height: 11vh;
-  color:#fe7e02;
+  color:white ;
+  font-style: oblique;
+  font-stretch: expanded;
   h1 {
     margin-left: 8px;
   }
@@ -38,19 +42,42 @@ const MainLabefy = styled.div`
   width: 98, 5vw;
   position: relative;
   background-position: center;
-  background-image:#ccbeac;
+  background:#f7f2ed;
   justify-content: center;
   background-repeat: no-repeat;
+  h1{
+margin-bottom: 5rem;
+  }
+`;
+const DivCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 150px;
+  border-width: 3px;
+  border-style: ridge;
+  border-color: violet;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  h2 {
+    width: 100%;
+  text-align: center;
+  padding: 0 0 5rem 0;
+  font-size: 3rem;
+  font-weight: 100;
+    
+      
+  }
 `;
 
-
 const CardList = styled.div`
-    border: 1px solid #ff6600;
-  color: black;
+    border: 1px solid #b223e3;
+  color: white;
   font-size: 30px;
-  background-image: linear-gradient(to left, #fe7e02, #fe7e02, #f7ad18e8);
+  background-image: linear-gradient(0deg,#711e8c,violet);
   display: flex;
-  width: 20%;
+  width: 20em;
   justify-content: space-between;
   align-items: center;
   text-align: center;
@@ -59,36 +86,47 @@ const CardList = styled.div`
   flex-direction: left;
 
 `
-const ButtonListCard = styled.button`
+const DelButton = styled.button`
    margin-left: 10px;
-  border-radius: 15px;
-  height: 35px;
-  background-color: black;
-  color: #fe7e02;
-  width: 100px;
+  border-radius: 100px;
+  height: 4rem;
+  background-color:#7a25a1;
+  color:  white;
+  width: 10rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  :hover {
+  background-color:  #7a25a1;
+  color: #fff;
+}
 
 `
 
-const ButtonPlaylist = styled.button`
-    display: flex;
+const PlaylistButton = styled.button`
+ display: flex;
   margin: auto;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  padding: 15px;
-  width: 200px;
+  margin-top: 40px;
+  padding: 1.6rem;
+  width: 20rem;
   text-align: center;
   justify-content: center;
   align-items: center;
-  font-size: 25px;
+  font-size: 1.3rem;
+  font-weight: 800;
   flex-direction: column;
-  border-radius: 20px 1px;
-  border: 1px solid gray;
-  height: 60px;
-  background: transparent;
-  color: black;
-
-
-` 
+  border: groove 0.3em violet;
+  border-radius: 2em;
+  background: pink;
+  color: #7a25a1;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  :hover {
+  background-color:  #7a25a1;
+  color: #fff;
+}
+`;
 
 const FooterLabefy = styled.footer`
   display: flex;
@@ -96,10 +134,10 @@ const FooterLabefy = styled.footer`
   align-items: center;
   text-align: center;
   flex-direction: column;
-  background-color: #352f2f;
+  background-image: linear-gradient(-90deg,red,orange,yellow,green,blue,indigo,violet);  
   height: 11vh;
   width: 98, 5vw;
-  color: #fe7e02;
+  color: white;
   font-size: 20px;
 `;
 
@@ -172,16 +210,18 @@ class PlaylistList extends React.Component {
     }
     const returnList = this.state.allPlaylist.map((playlists) => {
       return (
+        
         <CardList key={playlists.id}>
           {playlists.name}
 
           <div>
-            <ButtonListCard onClick={() => this.deletePlaylist(playlists.id)}>
-              Deletar
-            </ButtonListCard>
-            <ButtonListCard onClick={()=>this.renderPageTracks(playlists)}>Detalhes da Playlist</ButtonListCard>
+            <DelButton onClick={() => this.deletePlaylist(playlists.id)}>
+              Deletar Playlist
+            </DelButton>
+            <DelButton onClick={()=>this.renderPageTracks(playlists)}>Editar Playlist</DelButton>
           </div>
         </CardList>
+        
       );
     });
     return (
@@ -189,21 +229,24 @@ class PlaylistList extends React.Component {
         <GlobalStyle />
         <HeaderLabefy>
           <ImagemLogo src={foneLogo} />
-          <h1>Labefy Premium</h1>
+          <h1>Labefy</h1>
         </HeaderLabefy>
         <MainLabefy>
-            <h1>Lista de Playlist's</h1> 
+          <div>
+          <DivCard>
+            <h2>Lista de Playlist's</h2> 
             {returnList}
-            <div>
-                <ButtonPlaylist onClick={this.props.goToCreate}>
+           
+                <PlaylistButton onClick={this.props.goToCreate}>
                     Voltar
 
-                </ButtonPlaylist>
-            </div>
+                </PlaylistButton>
+                </DivCard>
+                </div>
             </MainLabefy>
             <FooterLabefy>
           © 2022 Labefy All rights reserved.
-          <p>Projeto desenvolvido pela aluna: Amanda Viana Fajardo </p>
+          <p>By Amanda Viana Fajardo </p>
         </FooterLabefy>
       </div>
     );
