@@ -21,6 +21,9 @@ const DivPrincipal = styled.div`
 const ImagemLogo = styled.img`
   height: 8vh;
   margin-left: 10px;
+  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    height: 4vh;
+  }
 `;
 
 const HeaderLabefy = styled.div`
@@ -45,6 +48,10 @@ const HeaderLabefy = styled.div`
   h1 {
     margin-left: 8px;
   }
+  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    font-size: 20px;
+    width: 100vw;
+  }
 `;
 
 const MainLabefy = styled.div`
@@ -67,6 +74,16 @@ const MainLabefy = styled.div`
   font-weight: 100;
   color:black
   }
+  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    font-size: 20px;
+    width: 100vw;
+    height: 110vh;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 `;
 
 const Control = styled.audio`
@@ -77,6 +94,13 @@ const Control = styled.audio`
 `;
 const SectionInputDiv = styled.div`
   display: inline-flex;
+  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    font-size: 10px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
   
 `
 
@@ -90,10 +114,16 @@ const CardList = styled.div`
   padding-left: 10px;
   justify-content: space-evenly;
   background-image: linear-gradient(0deg, #711e8c, violet);
-  height: 80px;
+  height: 50px;
   font-size: 15px;
   color:white;
-
+  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    font-size: 15px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
   
 `;
 
@@ -102,7 +132,7 @@ display: inline-block;
   /* display: flex; */
   margin: auto;
   margin-top: 40px;
-  padding: 1.6rem;
+  padding: 1.0rem;
   width: 20rem;
   text-align: center;
   justify-content: center;
@@ -119,6 +149,10 @@ display: inline-block;
   :hover {
     background-color: #7a25a1;
     color: #fff;
+  }
+  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    font-size: 15px;
+    width: 100px;
   }
 `;
 
@@ -156,6 +190,10 @@ const FooterLabefy = styled.footer`
   width: 98, 5vw;
   color: white;
   font-size: 20px;
+  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    width: 100vw;
+    font-size: 12px;
+  }
 `;
 
 const headers = {

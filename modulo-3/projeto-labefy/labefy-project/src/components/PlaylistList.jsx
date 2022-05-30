@@ -14,8 +14,10 @@ const GlobalStyle = createGlobalStyle`
 `;
 const ImagemLogo = styled.img`
   height: 8vh;
-  /* margin-right: 1px; */
   margin-left: 10px;
+  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    height: 4vh;
+  }
 `;
 
 const HeaderLabefy = styled.div`
@@ -30,6 +32,10 @@ const HeaderLabefy = styled.div`
   font-stretch: expanded;
   h1 {
     margin-left: 8px;
+  }
+  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    font-size: 20px;
+    width: 100vw;
   }
 `;
 
@@ -47,6 +53,16 @@ const MainLabefy = styled.div`
   background-repeat: no-repeat;
   h1{
 margin-bottom: 5rem;
+  }
+  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    font-size: 20px;
+    width: 100vw;
+    height: 110vh;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 `;
 const DivCard = styled.div`
@@ -66,8 +82,16 @@ const DivCard = styled.div`
   padding: 0 0 5rem 0;
   font-size: 3rem;
   font-weight: 100;
-    
-      
+    }
+    @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    font-size: 20px;
+    /* width: 100vw;
+    height: 110vh; */
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 `;
 
@@ -84,6 +108,10 @@ const CardList = styled.div`
   padding: 12px;
   margin-bottom: 20px;
   flex-direction: left;
+  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    font-size: 15px;
+    width: 20em;
+  }
 
 `
 const DelButton = styled.button`
@@ -100,6 +128,10 @@ const DelButton = styled.button`
   :hover {
   background-color:  #7a25a1;
   color: #fff;
+  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    font-size: 12px;
+    width: 80px;
+  }
 }
 
 `
@@ -108,7 +140,7 @@ const PlaylistButton = styled.button`
  display: flex;
   margin: auto;
   margin-top: 40px;
-  padding: 1.6rem;
+  padding: 1.0rem;
   width: 20rem;
   text-align: center;
   justify-content: center;
@@ -126,6 +158,10 @@ const PlaylistButton = styled.button`
   background-color:  #7a25a1;
   color: #fff;
 }
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    font-size: 15px;
+    width: 100px;
+  }
 `;
 
 const FooterLabefy = styled.footer`
@@ -139,6 +175,10 @@ const FooterLabefy = styled.footer`
   width: 98, 5vw;
   color: white;
   font-size: 20px;
+  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    width: 100vw;
+    font-size: 12px;
+  }
 `;
 
 const headers = {
@@ -215,10 +255,10 @@ class PlaylistList extends React.Component {
           {playlists.name}
 
           <div>
+           <DelButton onClick={()=>this.renderPageTracks(playlists)}>Editar Playlist</DelButton>
             <DelButton onClick={() => this.deletePlaylist(playlists.id)}>
               Deletar Playlist
             </DelButton>
-            <DelButton onClick={()=>this.renderPageTracks(playlists)}>Editar Playlist</DelButton>
           </div>
         </CardList>
         
