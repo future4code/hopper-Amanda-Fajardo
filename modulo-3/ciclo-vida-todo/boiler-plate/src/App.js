@@ -20,26 +20,26 @@ const InputsContainer = styled.div`
 
 class App extends React.Component {
   state = {
-    tarefas: [
-      {
-        id: Date.now(),
-        texto: "Arrumar a casa",
-        completa: false,
-      },
-
-      {
-        id: Date.now(),
-        texto: "Estudar",
-        completa: true,
-      },
-    ],
+    tarefas: [],
     inputValue: "",
     filtro: "pendentes",
   };
 
-  componentDidUpdate() {}
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.tarefas !== this.state.tarefas) {
+      localStorage.setItem('tarefas', JSON.stringify(this.state.tarefas))
+    }
+  }
 
-  componentDidMount() {}
+  componentDidMount() {
+    if (localStorage.getItem('tarefas') !== null) {
+      const stringTarefa = localStorage.getItem('tarefas')
+      const objetoTarefa = [...this.state.tarefas].concat(
+        JSON.parse(stringTarefa)
+      )
+      this.setState({ tarefas: objetoTarefa })
+    }
+  }
 
   onChangeInput = (event) => {
     this.setState({ inputValue: event.target.value });
@@ -54,27 +54,27 @@ class App extends React.Component {
 
     const novaListaTarefa = [...this.state.tarefas, novaTarefa];
 
-    this.setState({ tarefa: novaListaTarefa });
+    this.setState({ tarefas: novaListaTarefa, inputValue: '' });
   };
 
   selectTarefa = (id) => {
-    const selecionarTarefa = this.state.tarefas.map((tarefas) => {
-      if (id === tarefas.id) {
+    const selecionarTarefa = this.state.tarefas.map(tarefa => {
+      if (id === tarefa.id) {
         const tarefasNovas = {
-          ...tarefas,
-          completa: !tarefas.completa,
+          ...tarefa,
+          completa: !tarefa.completa,
         };
         return tarefasNovas;
       } else {
-        return tarefas;
+        return tarefa;
       }
     })
-    
+
     this.setState({ tarefas: selecionarTarefa });
   };
 
   onChangeFilter = (event) => {
-    this.setState
+    this.setState({ filtro: event.target.value })
   };
 
   render() {
@@ -100,7 +100,7 @@ class App extends React.Component {
 
         <InputsContainer>
           <label>Filtro</label>
-          <select value={this.state.filter} onChange={this.onChangeFilter}>
+          <select value={this.state.filtro} onChange={this.onChangeFilter}>
             <option value="">Nenhum</option>
             <option value="pendentes">Pendentes</option>
             <option value="completas">Completas</option>
