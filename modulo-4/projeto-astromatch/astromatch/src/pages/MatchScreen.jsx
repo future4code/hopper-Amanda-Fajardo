@@ -69,24 +69,24 @@ const ContainerMatch = styled.div`
 
 const Buttons = styled.button`
   border: 1px solid #000080;
-  color: #000080;
-  border-radius: 50%;
-  width: 6em;
-  height: 4em;
-  padding: 1.45em 0;
-  text-align: center;
-  box-shadow: 1px 1px 20px #999;
-  font-size: 18px;
+    color: #000080;
+    border-radius: 80%;
+    width: 5em;
+    height: 4em;
+    padding: 1.45em 0;
+    text-align: center;
+    box-shadow: 1px 1px 20px #999;
+    font-size: 18px;
 
-  cursor: pointer;
-  &:hover {
-    transition: all 0.5s ease 0s;
-    background-color: #000080;
-    box-shadow: 1px 1px 20px #333;
-    color: #fff;
+    cursor: pointer;
+    &:hover {
+      transition: all 0.5s ease 0s;
+      background-color: #aeb3b6d6;
+      box-shadow: 1px 1px 20px #333;
+      color: #2b2828;
 
-    transform: scale(1.1);
-  }
+      transform: scale(1.1);
+    }
 `;
 
 function MatchScreen(props) {
@@ -94,6 +94,7 @@ function MatchScreen(props) {
 
   useEffect(() => {
     getMatches();
+   
   }, []);
 
   const getMatches = () => {
@@ -106,6 +107,18 @@ function MatchScreen(props) {
         console.log(err.response.data);
       });
   };
+
+  const clearMatches = () => {
+    axios
+      .put(`${baseUrl}/clear`)
+      .then(() => {
+        alert("Matches deletados com sucesso!");
+      })
+      .catch((error) => {
+        alert(error.response.data);
+      });
+  };
+
   return (
     <ContainerMatch>
       <div>
@@ -127,9 +140,9 @@ function MatchScreen(props) {
             </li>
           );
         })}
-      </ul>
+      </ul> 
       <div></div>
-      <Buttons onClick={props.clearMatches} title="Deletar Match's">
+      <Buttons onClick={clearMatches} title="Deletar Match's">
         Delete{" "}
       </Buttons>
     </ContainerMatch>

@@ -95,8 +95,8 @@ const Buttons = styled.div`
     border: 1px solid #ff0000;
     color: #ff0000;
     border-radius: 50%;
-    width: 1.4em;
-    height: 1.4em;
+    width: 1.2em;
+    height: 1.2em;
     font-size: 50px;
     text-align: center;
     box-shadow: 1px 1px 20px #999;
@@ -113,8 +113,8 @@ const Buttons = styled.div`
   button:nth-child(2) {
     border: 1px solid #000080;
     color: #000080;
-    border-radius: 50%;
-    width: 6em;
+    border-radius: 80%;
+    width: 5em;
     height: 4em;
     padding: 1.45em 0;
     text-align: center;
@@ -124,26 +124,26 @@ const Buttons = styled.div`
     cursor: pointer;
     &:hover {
       transition: all 0.5s ease 0s;
-      background-color: #000080;
+      background-color: #aeb3b6d6;
       box-shadow: 1px 1px 20px #333;
-      color: #fff;
+      color: #2b2828;
 
       transform: scale(1.1);
     }
   }
   button:nth-child(3) {
-    border: 1px solid #008000;
-    color: #008000;
+    border: 1px solid #49a598;
+    color: #49a598;
     border-radius: 50%;
-    width: 1.4em;
-    height: 1.4em;
+    width: 1.2em;
+    height: 1.2em;
     font-size: 50px;
     text-align: center;
     box-shadow: 1px 1px 20px #999;
     cursor: pointer;
     &:hover {
       transition: all 0.5s ease 0s;
-      background-color: #008000;
+      background-color:#49a598;
       box-shadow: 1px 1px 20px #333;
       color: #fff;
 
@@ -157,6 +157,7 @@ function HomeScreen(props) {
 
   useEffect(() => {
     getProfileToChoose();
+   
   }, []);
 
   const getProfileToChoose = () => {
@@ -199,6 +200,17 @@ function HomeScreen(props) {
       });
   };
 
+  const clearMatches = () => {
+    axios
+      .put(`${baseUrl}/clear`)
+      .then(() => {
+        alert("Matches deletados com sucesso!");
+      })
+      .catch((error) => {
+        alert(error.response.data);
+      });
+  };
+
   return (
     <ContainerHome>
       <div>
@@ -224,7 +236,7 @@ function HomeScreen(props) {
         <button onClick={deslike} title="Não faz meu tipo">
           x
         </button>
-        <button onClick={props.clearMatches} title="Deletar Match's">
+        <button onClick={clearMatches} title="Deletar Match's">
           Delete
         </button>
         <button onClick={like} title="Gostei Hein">

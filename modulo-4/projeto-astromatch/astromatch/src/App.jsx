@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import HomeScreen from "./pages/HomeScreen";
 import MatchScreen from "./pages/MatchScreen";
-import { baseUrl } from "./constants/BaseUrl";
 import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -50,7 +48,7 @@ function App() {
       case "match":
         return <MatchScreen onChangeHomeScreen={onChangeHomeScreen} />;
       default:
-        return <div>Erro! Página não encontrada </div>;
+        return <HomeScreen onChangeMatchScreen={onChangeMatchScreen} />;
     }
   };
   const onChangeHomeScreen = () => {
@@ -61,22 +59,10 @@ function App() {
     setHomeScreen("match");
   };
 
-  const clearMatches = () => {
-    axios
-      .put(`${baseUrl}/clear`)
-      .then(() => {
-        alert("Matches deletados com sucesso!");
-      })
-      .catch((error) => {
-        alert(error.response.data);
-      });
-  };
-
   return (
     <Container>
       <GlobalStyle />
-      <div></div>
-      {clearMatches}
+
       <Screen>{chooseScreen()}</Screen>
     </Container>
   );
