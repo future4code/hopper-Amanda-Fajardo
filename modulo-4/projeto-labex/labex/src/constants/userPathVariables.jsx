@@ -1,0 +1,1 @@
+export const userPathVariables = 'amanda-fajardo-hopper/'
