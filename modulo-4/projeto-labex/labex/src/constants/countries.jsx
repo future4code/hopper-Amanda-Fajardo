@@ -1,0 +1,1 @@
+export const countries = ["Abecásia", "Afeganistão", "África do Sul", "Albânia", "Alemanha", "Andorra","Angola","Antígua e Barbuda","Arábia Saudita","Argélia","Argentina","Armênia","Austrália","Áustria","Azerbaijão",]
