@@ -1,0 +1,17 @@
+{
+  "name": "intro-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "first": "tsc  && node ./build/index.js",
+    "second": "tsc && node ./build/index2.js",
+    "third": "tsc && node ./build/index3.js",
+    "fourth": "tsc && node ./build/index4.js",
+    "fifth": "tsc && node ./build/index5.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
