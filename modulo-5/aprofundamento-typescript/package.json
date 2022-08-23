@@ -1,0 +1,15 @@
+{
+  "name": "aprofundamento-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "first": "tsc && node ./build/exercicio-1.js",
+    "second":"tsc && node ./build/exercicio-2.js",
+    "third":"tsc && node ./build/exercicio-3.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
