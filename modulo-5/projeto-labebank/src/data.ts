@@ -1,21 +1,21 @@
 export type User = {
   name: string,
   cpf: string,
-  birthday: string | Date,
+  birthday:Date,
   balance: number,
   extract: Transation[]
 }
 
 export type Transation = {
-  description: string,
   value: number,
-  date: string | Date
+  date: string
+  description: string,
 }
 
 export const users : User[] = [
     { name: "Amanda",
     cpf: "00000000000",
-    birthday: "06/12/1993",
+    birthday: new Date("06/12/1993"),
     balance: 500,
     extract: [
     {
@@ -27,7 +27,7 @@ export const users : User[] = [
   },
   { name: "Glória",
     cpf: "11111111111",
-    birthday: "04/05/1968",
+    birthday: new Date ("04/05/1968"),
     balance: 700,
     extract: [
     {
