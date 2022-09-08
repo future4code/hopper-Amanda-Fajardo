@@ -22,8 +22,8 @@ app.get("/users", (req: Request, res: Response) => {
 
 //Exercício 02
 
-//a. Parâmetro params. Porque é a melhor maneira para buscar algo específico usando o identificador único.
-
+//a. params porque é a melhor maneira para buscar algo específico usando o identificador único.
+//b. tipando o objeto e restrigindo os tipos.
 app.get("/users/:id", (req: Request, res: Response) => {
   
     let errorCode = 500
@@ -50,6 +50,8 @@ app.get("/users/:id", (req: Request, res: Response) => {
       res.status(errorCode).send(error.message)
     }
 });
+
+
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
