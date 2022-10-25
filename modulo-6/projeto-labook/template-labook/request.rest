@@ -1,0 +1,23 @@
+
+
+POST http://localhost:3003/user/create
+Content-Type: application/json
+{
+"name": "Alice", "email": "alice@email.com", "password": "123456"
+}
+
+###
+
+
+POST http://localhost:3003/posts/create
+
+Content-Type: application/json
+{
+    "photo":"http://blog.analiberato.com/wp-content/uploads/2019/11/fotografia-poses-yoga-insta-tumblr-13.jpg",
+    "description":"foto praticando yoga",
+    "type":"normal",
+    "authorId":"b73febda-a030-427e-a7c9-484fbf271950"
+}
+
+###
+GET http://localhost:3003/user 
