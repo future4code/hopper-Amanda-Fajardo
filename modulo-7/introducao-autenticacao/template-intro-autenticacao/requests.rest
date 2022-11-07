@@ -1,0 +1,26 @@
+
+POST http://localhost:3003/user/signup 
+Content-Type: application/json
+
+{
+"name":"Amanda" , 
+"nickname": "amandinha" , 
+"email": "amanda@viana.com" , 
+"password": "lalalala"
+}
+
+###
+
+POST http://localhost:3003/user/login 
+Content-Type: application/json
+
+{
+"email": "osbourne@oscorp.com" , "password": "ihatepeter"
+}
+
+###
+
+GET http://localhost:3003/user/profile 
+
+Authorization: 26588fba-7d0e-4a7f-96c6-a203c921fbd7
+Content-Type: application/json
