@@ -1,0 +1,42 @@
+# @name signup
+###
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+   "name": "Testando",  
+   "email": "teste@teste.com" ,
+   "password": "123456"
+}
+
+
+###
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+   "email": "teste@teste.com" ,
+   "password": "123456"
+}
+
+###
+PUT http://localhost:3003/user/edit/:id
+Content-Type: application/json
+
+{
+   "name": "Harry Osbourne" 
+}
+
+###
+GET http://localhost:3003/user/profile
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImMwMzgzMDhlLWQ2NTctNGY5OS1hM2Q3LTVhMmU1YzdlMzVmOCIsImlhdCI6MTY2ODk2NTA1NywiZXhwIjoxNjY4OTY4NjU3fQ.kdOVXRjDX6MYUIHbYkLVr-9Y84cE4cjyjEII0ZCbMVY
+
+###
+POST http://localhost:3003/user/recipe
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk3ZjVmMjE0LWFmN2UtNDJlMi1iODZkLTcyMjhlNTI1NmE3NyIsImlhdCI6MTY2ODIxNzQ2MCwiZXhwIjoxNjY4MjI0NjYwfQ.w4Cg_ioK7PB69z3h9qQle0mKO_tmf9bqpIufVyqIbIw
+Content-Type: application/json
+
+{
+   "title": "teste",
+   "description": "teste"
+}
